@@ -1,0 +1,85 @@
+@import '../../utils/variables.scss';
+
+.modal-wrapper {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.5);
+
+	.modal {
+		width: 50%;
+		background: $background-hover;
+		border-radius: 5px;
+		display: flex;
+		flex-direction: column;
+
+		.modal-header {
+			border-radius: 5px 5px 0 0;
+			display: flex;
+			justify-content: space-between;
+			background: $background;
+			padding: 10px 1rem;
+			h4 {
+				margin: 0;
+				padding: 0;
+			}
+			p {
+				font-size: 12px;
+				opacity: 0.7;
+				margin: 10px 0;
+			}
+
+			&__close span {
+				cursor: pointer;
+			}
+		}
+
+		.modal-body {
+			display: flex;
+			gap: 12px;
+			padding: 1rem;
+			flex-direction: column;
+
+			.input-row {
+				display: flex;
+				gap: 10px;
+				.input-wrapper {
+					flex: 1;
+				}
+			}
+		}
+		.modal-footer {
+			padding: 1rem;
+			display: flex;
+			justify-content: flex-end;
+
+			&__btns {
+				display: flex;
+				gap: 5px;
+
+				button {
+					border: none;
+					padding: 5px 12px;
+					cursor: pointer;
+				}
+
+				button:last-child {
+					border: none;
+					background: $background;
+					border-radius: 5px;
+					color: $background-hover;
+
+					&:disabled {
+						background-color: $gray-color;
+						cursor: not-allowed;
+					}
+				}
+			}
+		}
+	}
+}

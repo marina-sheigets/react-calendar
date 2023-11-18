@@ -1,0 +1,19 @@
+@import '../../utils/variables.scss';
+
+.current-day-wrapper {
+	background: $background;
+	flex: 1;
+	padding: 2rem;
+	color: $background-hover;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	h1,
+	h2 {
+		margin: 0;
+		padding: 0;
+		text-transform: uppercase;
+		font-weight: 300;
+	}
+}

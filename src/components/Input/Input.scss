@@ -1,0 +1,28 @@
+@import '../../utils/variables.scss';
+
+.input-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	label {
+		color: $background;
+	}
+
+	.input {
+		border: none;
+		border-radius: 5px;
+		height: 2rem;
+		outline: none;
+		padding-left: 5px;
+		color: $gray-color;
+		&:focus {
+			border: 2px solid $background;
+		}
+		&::-webkit-calendar-picker-indicator {
+			cursor: pointer;
+		}
+	}
+	.error {
+		border: 2px solid red;
+	}
+}

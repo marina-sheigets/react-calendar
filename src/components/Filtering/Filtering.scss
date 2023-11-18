@@ -1,0 +1,47 @@
+@import '../../utils/variables.scss';
+
+.filtering-wrapper {
+	flex: 1;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 2rem 1rem;
+	.change-month-btn {
+		border: 2px solid $background-hover;
+		background: transparent;
+		padding: 8px 15px;
+		border-radius: 8px;
+		color: $gray-color;
+		cursor: pointer;
+
+		&:disabled {
+			background: $background-hover;
+			color: $gray-color;
+			cursor: not-allowed;
+		}
+	}
+
+	.date-filter {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		color: $background;
+		font-size: 1.5rem;
+		text-transform: uppercase;
+
+		.input {
+			border: 2px solid $background-hover;
+			padding: 3px 15px;
+		}
+
+		.select-today-btn {
+			border-radius: 6px;
+			cursor: pointer;
+			padding: 0 12px;
+			border: none;
+			background: $background;
+			color: $background-hover;
+			height: 36px;
+		}
+	}
+}

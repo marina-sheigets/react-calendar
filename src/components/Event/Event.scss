@@ -1,0 +1,16 @@
+@import '../../utils/variables.scss';
+
+.event-item {
+	padding: 5px 12px;
+	border-radius: 10px;
+	height: 40px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	text-wrap: nowrap;
+
+	&:hover {
+		cursor: pointer;
+		background-color: $gray-color;
+	}
+}
