@@ -41,7 +41,7 @@ function CalendarDay({ currentMonth, dayOfMonth, handleModalOpen, handleSelectDa
 			className={className}
 			style={{
 				gridColumn:
-					+currentMonth[dayOfMonth].day !== 1 && +dayOfMonth === 1
+					+currentMonth[dayOfMonth].day !== 0 && +dayOfMonth === 1
 						? +currentMonth[dayOfMonth].day
 						: 'auto',
 			}}>

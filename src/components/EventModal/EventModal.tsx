@@ -113,6 +113,7 @@ function EventModal({ type = 'create', event, onClose, setValues }: IEventModal)
 							error={!date.length}
 							required
 							value={date}
+							classes={type !== 'create' ? 'date-disabled' : ''}
 							onChange={handleChangeDate}
 							type='date'
 							label='Date'

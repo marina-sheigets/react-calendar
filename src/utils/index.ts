@@ -63,7 +63,7 @@ export const generateInitialData = () => {
 			}
 
 			for (let day = 1; day <= daysInMonth; day++) {
-				const dayOfWeek = getDayOfWeek(leftYear + index, MONTHS[i].order, day);
+				const dayOfWeek = getDayOfWeek(leftYear + index, MONTHS[i].month, day);
 				const dayName = WEEKDAYS[dayOfWeek];
 
 				yearObj[leftYear + index][monthName][day] = {
@@ -94,17 +94,13 @@ export function parseDate(date: string) {
 	};
 }
 
-export function getDayOfWeek(year: number, month: number | string, day: number) {
-	if (typeof month === 'string') {
-		month = (MONTHS.find((monthObj) => monthObj.month === month)?.order as number) + 1;
-		if (month === 13) {
-			month = 1;
-		}
+export function getDayOfWeek(year: number, month: string, day: number) {
+	let monthOrder = (MONTHS.find((monthObj) => monthObj.month === month)?.order as number) + 1;
+	if (monthOrder === 13) {
+		monthOrder = 1;
 	}
 
-	const date = new Date(
-		`${year}-${month > 9 ? month : `0${month}`}-${day > 9 ? day : `0${day}`}`
-	);
+	const date = new Date(`${year}-${month}-${day}`);
 
 	return date.getDay();
 }
