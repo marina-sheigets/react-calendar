@@ -6,7 +6,11 @@
 	justify-items: center;
 	align-items: center;
 	grid-template-columns: repeat(7, 1fr);
-	gap: 10px;
+	gap: 5px;
+
+	@media screen and (max-width: $phone-size) {
+		flex: 7;
+	}
 	.week-day {
 		text-transform: uppercase;
 		color: $gray-color;
@@ -24,8 +28,8 @@
 		}
 
 		@media screen and (max-width: $phone-size) {
-			width: 40px;
-			height: 30px;
+			width: 30px;
+			height: 50px;
 			padding: 6px;
 		}
 		.cell-header {
@@ -48,6 +52,13 @@
 		.event-list {
 			height: 70%;
 			overflow: hidden;
+
+			@media screen and (max-width: $phone-size) {
+				font-size: 10px;
+				display: flex;
+				flex-direction: column;
+				gap: 3px;
+			}
 		}
 	}
 

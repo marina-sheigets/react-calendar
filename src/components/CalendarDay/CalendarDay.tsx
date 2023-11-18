@@ -58,7 +58,13 @@ function CalendarDay({
 				}}>
 				<div className='cell-header'>{dayOfMonth}</div>
 
-				{currentMonth[dayOfMonth].events.length ? '...' : null}
+				{currentMonth[dayOfMonth].events && (
+					<div className='event-list'>
+						{currentMonth[dayOfMonth].events.map((event) => (
+							<div key={event.id}>{event.title}</div>
+						))}
+					</div>
+				)}
 			</div>
 		);
 	}
