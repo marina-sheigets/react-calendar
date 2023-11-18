@@ -23,6 +23,11 @@
 			background-color: $background-hover;
 		}
 
+		@media screen and (max-width: $phone-size) {
+			width: 40px;
+			height: 30px;
+			padding: 6px;
+		}
 		.cell-header {
 			display: flex;
 			justify-content: space-between;

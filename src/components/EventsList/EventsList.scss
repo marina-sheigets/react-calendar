@@ -1,3 +1,5 @@
+@import '../../utils/variables.scss';
+
 .events-list {
 	margin-top: 3rem;
 	max-height: 60%;
@@ -5,4 +7,8 @@
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+
+	@media screen and (max-width: $phone-size) {
+		margin-top: 1rem;
+	}
 }

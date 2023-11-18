@@ -16,4 +16,8 @@
 		text-transform: uppercase;
 		font-weight: 300;
 	}
+
+	@media screen and (max-width: $phone-size) {
+		padding: 1rem;
+	}
 }

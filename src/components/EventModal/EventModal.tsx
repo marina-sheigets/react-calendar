@@ -112,6 +112,7 @@ function EventModal({ type = 'create', event, onClose, setValues }: IEventModal)
 						<Input
 							error={!date.length}
 							required
+							disabled={type !== 'create'}
 							value={date}
 							classes={type !== 'create' ? 'date-disabled' : ''}
 							onChange={handleChangeDate}

@@ -21,6 +21,7 @@ import {
 
 const CalendarCells = () => {
 	const dispatch = useDispatch();
+	const [isMobile, setIsMobile] = useState(false);
 	const data = useSelector(getCalendarData);
 	const selectedDate = useSelector(getSelectedDate);
 
@@ -34,6 +35,7 @@ const CalendarCells = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	useEffect(() => {
+		setIsMobile(window.innerWidth < 481);
 		const { currentDay: day, currentMonth: month, currentYear: year } = getInitialCurrentDate();
 		const calendarDataObj = localStorage.getItem('calendarData');
 		const selectedDateObj = localStorage.getItem('selectedDate');
@@ -108,6 +110,11 @@ const CalendarCells = () => {
 		setIsModalOpen(false);
 	};
 
+	const handleSelectDayOnMobile = (dayOfMonth: string) => {
+		handleSelectDay(dayOfMonth);
+		handleModalOpen(dayOfMonth);
+	};
+
 	if (!selectedMonth) {
 		return <div className='table'>Loading...</div>;
 	}
@@ -116,12 +123,14 @@ const CalendarCells = () => {
 		<div className='table'>
 			{WEEKDAYS.map((day) => (
 				<div key={day} className='week-day'>
-					{day}
+					{isMobile ? day.slice(0, 3) : day}
 				</div>
 			))}
 			{Object.keys(selectedMonth).map((dayOfMonth) => {
 				return (
 					<CalendarDay
+						handleSelectDayOnMobile={handleSelectDayOnMobile}
+						isMobile={isMobile}
 						key={dayOfMonth}
 						currentMonth={selectedMonth}
 						dayOfMonth={dayOfMonth}

@@ -1,5 +1,11 @@
+@import '../../utils/variables.scss';
+
 .calendar-component {
 	width: 100%;
 	height: 100%;
 	display: flex;
+
+	@media screen and (max-width: $phone-size) {
+		flex-direction: column;
+	}
 }

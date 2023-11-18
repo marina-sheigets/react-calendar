@@ -4,11 +4,14 @@ import { formatDateToInputValue, getNextMonth, getPreviousMonth, parseDate } fro
 import Input from '../Input/Input';
 import './Filtering.scss';
 import { useSelector, useDispatch } from 'react-redux';
-import { useMemo } from 'react';
+import { useMemo, useEffect, useState } from 'react';
+
 function Filtering() {
 	const selectedDate = useSelector(getSelectedDate);
 	const currentDate = useSelector(getCurrentDate);
 	const dispatch = useDispatch();
+	const [isMobile, setIsMobile] = useState(false);
+
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		e.preventDefault();
 	};
@@ -51,16 +54,20 @@ function Filtering() {
 	const isPreviousMonthButtonDisabled = useMemo(() => {
 		return selectedDate.year === 2018 && selectedDate.month === 'January';
 	}, [selectedDate.month, selectedDate.year]);
+
+	useEffect(() => {
+		setIsMobile(window.innerWidth < 481);
+	}, []);
 	return (
 		<div className='filtering-wrapper'>
 			<button
 				className='change-month-btn'
 				onClick={handleSelectPreviousMonth}
 				disabled={isPreviousMonthButtonDisabled}>
-				{'<'} Previous Month
+				{'<'} {!isMobile && 'Previous Month'}
 			</button>
 			<div className='date-filter'>
-				Select date
+				{!isMobile && 'Select date'}
 				<Input
 					error={false}
 					value={formatDateToInputValue(
@@ -83,7 +90,7 @@ function Filtering() {
 				className='change-month-btn'
 				onClick={handleSelectNextMonth}
 				disabled={isNextMonthButtonDisabled}>
-				Next Month {'>'}
+				{!isMobile && 'Next Month'} {'>'}
 			</button>
 		</div>
 	);

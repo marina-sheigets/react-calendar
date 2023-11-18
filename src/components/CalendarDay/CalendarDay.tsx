@@ -8,9 +8,18 @@ interface ICalendarDay {
 	dayOfMonth: string;
 	handleModalOpen: (data: string) => void;
 	handleSelectDay: (data: string) => void;
+	isMobile: boolean;
+	handleSelectDayOnMobile: (data: string) => void;
 }
 
-function CalendarDay({ currentMonth, dayOfMonth, handleModalOpen, handleSelectDay }: ICalendarDay) {
+function CalendarDay({
+	currentMonth,
+	dayOfMonth,
+	handleModalOpen,
+	handleSelectDay,
+	isMobile,
+	handleSelectDayOnMobile,
+}: ICalendarDay) {
 	const currentDate = useSelector(getCurrentDate);
 	const selectedDate = useSelector(getSelectedDate);
 	const [isButtonVisible, setIsButtonVisible] = useState(false);
@@ -32,6 +41,28 @@ function CalendarDay({ currentMonth, dayOfMonth, handleModalOpen, handleSelectDa
 			} ${selectedDate.day === +dayOfMonth && 'selected'} `,
 		[currentDate, dayOfMonth, selectedDate]
 	);
+
+	if (isMobile) {
+		return (
+			<div
+				onMouseOver={handleShowButton}
+				onMouseOut={handleHideButton}
+				onClick={() => handleSelectDayOnMobile(dayOfMonth)}
+				key={dayOfMonth}
+				className={className}
+				style={{
+					gridColumn:
+						+currentMonth[dayOfMonth].day !== 0 && +dayOfMonth === 1
+							? +currentMonth[dayOfMonth].day
+							: 'auto',
+				}}>
+				<div className='cell-header'>{dayOfMonth}</div>
+
+				{currentMonth[dayOfMonth].events.length ? '...' : null}
+			</div>
+		);
+	}
+
 	return (
 		<div
 			onMouseOver={handleShowButton}

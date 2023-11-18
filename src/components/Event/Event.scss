@@ -13,4 +13,8 @@
 		cursor: pointer;
 		background-color: $gray-color;
 	}
+
+	@media screen and (max-width: $phone-size) {
+		height: 20px;
+	}
 }

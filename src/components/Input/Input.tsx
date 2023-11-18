@@ -10,10 +10,12 @@ interface IInput {
 	min?: string | number;
 	max?: string | number;
 	onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+	disabled?: boolean;
 	classes?: string;
 }
 
 function Input({
+	disabled,
 	classes,
 	error,
 	required,
@@ -32,6 +34,7 @@ function Input({
 				{required ? ' *' : null}
 			</label>
 			<input
+				disabled={disabled}
 				onKeyDown={onKeyDown}
 				min={min}
 				max={max}
