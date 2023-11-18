@@ -2,13 +2,13 @@ import { useState, useMemo } from 'react';
 import { getCurrentDate, getSelectedDate } from '../../redux/selectors';
 import { useSelector } from 'react-redux';
 import { IDayData } from '../../types';
+import { isMobile } from 'react-device-detect';
 
 interface ICalendarDay {
 	currentMonth: IDayData;
 	dayOfMonth: string;
 	handleModalOpen: (data: string) => void;
 	handleSelectDay: (data: string) => void;
-	isMobile: boolean;
 	handleSelectDayOnMobile: (data: string) => void;
 }
 
@@ -17,7 +17,6 @@ function CalendarDay({
 	dayOfMonth,
 	handleModalOpen,
 	handleSelectDay,
-	isMobile,
 	handleSelectDayOnMobile,
 }: ICalendarDay) {
 	const currentDate = useSelector(getCurrentDate);

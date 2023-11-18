@@ -4,13 +4,14 @@ import { formatDateToInputValue, getNextMonth, getPreviousMonth, parseDate } fro
 import Input from '../Input/Input';
 import './Filtering.scss';
 import { useSelector, useDispatch } from 'react-redux';
-import { useMemo, useEffect, useState } from 'react';
+import { useMemo } from 'react';
+import { isMobile } from 'react-device-detect';
 
 function Filtering() {
+	console.log(isMobile);
 	const selectedDate = useSelector(getSelectedDate);
 	const currentDate = useSelector(getCurrentDate);
 	const dispatch = useDispatch();
-	const [isMobile, setIsMobile] = useState(false);
 
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		e.preventDefault();
@@ -55,9 +56,6 @@ function Filtering() {
 		return selectedDate.year === 2018 && selectedDate.month === 'January';
 	}, [selectedDate.month, selectedDate.year]);
 
-	useEffect(() => {
-		setIsMobile(window.innerWidth < 481);
-	}, []);
 	return (
 		<div className='filtering-wrapper'>
 			<button

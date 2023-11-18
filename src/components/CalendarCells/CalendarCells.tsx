@@ -18,10 +18,10 @@ import {
 	setCurrentDate,
 	setSelectedDate,
 } from '../../redux/slices/calendarSlice';
+import {isMobile} from 'react-device-detect'
 
 const CalendarCells = () => {
 	const dispatch = useDispatch();
-	const [isMobile, setIsMobile] = useState(false);
 	const data = useSelector(getCalendarData);
 	const selectedDate = useSelector(getSelectedDate);
 
@@ -35,7 +35,6 @@ const CalendarCells = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	useEffect(() => {
-		setIsMobile(window.innerWidth < 481);
 		const { currentDay: day, currentMonth: month, currentYear: year } = getInitialCurrentDate();
 		const calendarDataObj = localStorage.getItem('calendarData');
 		const selectedDateObj = localStorage.getItem('selectedDate');
@@ -130,7 +129,6 @@ const CalendarCells = () => {
 				return (
 					<CalendarDay
 						handleSelectDayOnMobile={handleSelectDayOnMobile}
-						isMobile={isMobile}
 						key={dayOfMonth}
 						currentMonth={selectedMonth}
 						dayOfMonth={dayOfMonth}
